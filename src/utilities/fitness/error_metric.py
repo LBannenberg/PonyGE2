@@ -1,7 +1,7 @@
 import warnings
 
 import numpy as np
-from sklearn.metrics.classification import f1_score as sklearn_f1_score
+from sklearn.metrics import f1_score as sklearn_f1_score
 
 
 def mae(y, yhat):
