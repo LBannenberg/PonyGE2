@@ -38,7 +38,14 @@ def tournament(population):
     while len(winners) < params['GENERATION_SIZE']:
         # Randomly choose TOURNAMENT_SIZE competitors from the given
         # population. Allows for re-sampling of individuals.
-        competitors = sample(available, params['TOURNAMENT_SIZE'])
+        try:
+            competitors = sample(available, params['TOURNAMENT_SIZE'])
+        except ValueError:
+            if len(available) < params['TOURNAMENT_SIZE']:
+                # Most common reason for this error
+                print(f"Error: only {len(available)} candidates for tournament size of {params['TOURNAMENT_SIZE']}.")
+                print("        This may be caused by unsuitable experiment (population/selection/survival) parameters.")
+            raise
 
         # Return the single best competitor.
         winners.append(max(competitors))
