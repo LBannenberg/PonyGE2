@@ -45,13 +45,12 @@ def generate_tree(tree, genome, output, method, nodes, depth, max_depth,
     # Randomly pick a production choice.
     chosen_prod = choice(available)
 
-    # Find the index of the chosen production and set a matching codon based
-    # on that index.
+    # Find the index of the chosen production
     prod_index = productions['choices'].index(chosen_prod)
-    codon = randrange(productions['no_choices'],
-                      params['BNF_GRAMMAR'].codon_size,
-                      productions['no_choices']) + prod_index
-    
+
+    # Find a matching codon for that index
+    codon = randrange(start=0, stop=params['BNF_GRAMMAR'].codon_size, step=productions['no_choices']) + prod_index
+
     # Set the codon for the current node and append codon to the genome.
     tree.codon = codon
     genome.append(codon)
@@ -226,12 +225,11 @@ def pi_random_derivation(tree, max_depth):
         # Randomly pick a production choice.
         chosen_prod = choice(available)
 
-        # Find the index of the chosen production and set a matching codon
-        # based on that index.
+        # Find the index of the chosen production
         prod_index = productions['choices'].index(chosen_prod)
-        codon = randrange(productions['no_choices'],
-                          params['BNF_GRAMMAR'].codon_size,
-                          productions['no_choices']) + prod_index
+
+        # Find a matching codon for that index
+        codon = randrange(start=0, stop=params['BNF_GRAMMAR'].codon_size, step=productions['no_choices']) + prod_index
 
         # Set the codon for the current node and append codon to the genome.
         node.codon = codon
@@ -333,12 +331,11 @@ def pi_grow(tree, max_depth):
         # Randomly pick a production choice.
         chosen_prod = choice(available)
 
-        # Find the index of the chosen production and set a matching codon
-        # based on that index.
+        # Find the index of the chosen production
         prod_index = productions['choices'].index(chosen_prod)
-        codon = randrange(productions['no_choices'],
-                          params['BNF_GRAMMAR'].codon_size,
-                          productions['no_choices']) + prod_index
+
+        # Find a matching codon for that index
+        codon = randrange(start=0, stop=params['BNF_GRAMMAR'].codon_size, step=productions['no_choices']) + prod_index
 
         # Set the codon for the current node and append codon to the genome.
         node.codon = codon
